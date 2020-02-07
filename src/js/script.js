@@ -16,13 +16,14 @@ const user_form = document.getElementById('user_form');
 // const user = username.value;
 // The time was set here:
 
-const date = new Date();
-const hours = date.getHours();
-const minutes = date.getMinutes();
-const time = `${hours} : ${minutes}`;
 
 
 const sendMessage = (Msg) => {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const time = `${hours} : ${minutes}`;
+
     const newMsg = document.createElement('div');
     const msgTime = document.createElement('div');
     msgTime.innerText = time;
@@ -42,17 +43,21 @@ socket.emit("new_user", user)
 
 
 socket.on("chat-message", data => {
-    sendMessage(data);
+    sendMessage(`${data.name}: ${data.message}`);
 })
 
 socket.on("user_connected", user => {
     sendMessage(`${user} just connected`);
 })
 
+socket.on("User_disconnected", name => {
+    sendMessage(`${name}: offline`);
+})
 
 form.addEventListener('submit', (e) => {
     e.preventDefault()
     const message = inputText.value;
     socket.emit("send-chat-message", message);
+    sendMessage(`you: ${message}`);
     inputText.value = ' ';
 })

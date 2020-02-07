@@ -4,24 +4,23 @@ const message = document.getElementById('messages');
 const timeContainer = document.getElementById('time');
 const form = document.getElementById('msg-container');
 const inputText = document.getElementById('text');
+const username = document.getElementById('user');
+const user_submit = document.getElementById('user_submit');
+const user_form = document.getElementById('user_form');
 
 // Create a new date that tells you the time when the message was sent !
 // It comes at the base of the recieved and send message.
+// user_submit.addEventListener('click', () => {
+//     user_form.style.display = "none";
+// })
+// const user = username.value;
+// The time was set here:
 
 const date = new Date();
 const hours = date.getHours();
 const minutes = date.getMinutes();
-const time = `${hours} : ${minutes}`
-socket.on("chat-message", data => {
-    sendMessage(data);
-})
+const time = `${hours} : ${minutes}`;
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault()
-    const message = inputText.value;
-    socket.emit("send-chat-message", message);
-    inputText.value = ' ';
-})
 
 const sendMessage = (Msg) => {
     const newMsg = document.createElement('div');
@@ -29,6 +28,31 @@ const sendMessage = (Msg) => {
     msgTime.innerText = time;
     newMsg.innerText = Msg;
     // timeContainer.append(msgTime)
-    form.append(newMsg);
-    form.append(msgTime);
+    if (newMsg.innerText === '') {
+        msgTime.style.display = 'none';
+    } else {
+        form.append(newMsg);
+        form.append(msgTime);
+    }
 }
+
+const user = prompt("Kindly enter your name ");
+sendMessage("you just joined")
+socket.emit("new_user", user)
+
+
+socket.on("chat-message", data => {
+    sendMessage(data);
+})
+
+socket.on("user_connected", user => {
+    sendMessage(`${user} just connected`);
+})
+
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault()
+    const message = inputText.value;
+    socket.emit("send-chat-message", message);
+    inputText.value = ' ';
+})

@@ -37,7 +37,8 @@ const sendMessage = (Msg) => {
     }
 }
 
-const user = prompt("Kindly enter your name ");
+// const user = prompt("Kindly enter your name ");
+
 sendMessage("you just joined")
 socket.emit("new_user", user)
 

@@ -1,16 +1,22 @@
 const express = require('express');
+const expressLayout = require('express-ejs-layouts');
 const path = require('path');
-const knex = require('knex');
 const io = require("socket.io")(3000);
 const app = express();
 
 const users = {};
-
-// This is the major chat server that connects to the other servers!
-
-// This is used to ensure that the website loads files mostly the css 
+// This is used to ensure that the website loads files mostly the css // The middleware
+app.use(expressLayout);
+app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'src')));
 // =================================================
+
+// Here we use the router to fetch pages 
+
+app.use('/', require('./routes/index'));
+app.use('/users', require('./routes/users'));
+// =================================================
+
 
 // This returns the index page!
 app.get('/', (req, res) => {
@@ -29,6 +35,8 @@ var database = require('knex')({
     }
 });
 // ================================================
+
+// This is the major chat server that connects to the other servers!
 io.on("connection", socket => {
     socket.on("send-chat-message", message => {
         socket.broadcast.emit('chat-message', {
@@ -46,5 +54,6 @@ io.on("connection", socket => {
         delete users[socket.id];
     })
 })
+// =========================================================
 const PORT = process.env.PORT || 5100;
 app.listen(PORT, console.log(`Server started on ${PORT}`));

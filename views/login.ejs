@@ -1,0 +1,14 @@
+<div class="container form">
+    <form method="POST" action="/users/register">
+        <div class="form-group">
+
+            <input type="email" class="form-control" name="email" id="email" placeholder="enter email"
+                value="<%= typeof email != 'undefined' ? email : '' %>">
+            <p class="error" id="error"></p>
+            <input type="password" class="form-control" name="password" id="password" placeholder="Enter password"
+                value="<%= typeof password != 'undefined' ? password : '' %>">
+            <!-- <input type="file" name="user_img" class="img" id="user_img" readonly> -->
+            <button class="container btn btn-primary btn-sm">submit</button>
+            <!-- <p>Click <a href="/users/login">here</a> to login.</p> -->
+        </div>
+    </form>

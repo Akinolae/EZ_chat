@@ -24,17 +24,6 @@ app.get('/', (req, res) => {
 })
 // =================================================
 
-// Creat a database with knex!
-var database = require('knex')({
-    client: 'mysql',
-    connection: {
-        host: '127.0.0.1',
-        user: 'your_database_user',
-        password: 'your_database_password',
-        database: 'myapp_test'
-    }
-});
-// ================================================
 
 // This is the major chat server that connects to the other servers!
 io.on("connection", socket => {

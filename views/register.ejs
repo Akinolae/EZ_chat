@@ -2,13 +2,13 @@
     <form method="POST" action="/users/register">
         <div class="form-group">
             <input type="text" class="form-control" name="firstName" id="firstName" placeholder="first name"
-                value="<%= typeof firstName != 'undefined' ? firstName : '' %>">
+                value="<%= typeof firtsName != 'undefined' ? firstName : ' ' %>">
             <p class="user_name_checker" id="user_name_checker"></p>
             <input type="email" class="form-control" name="email" id="email" placeholder="enter email"
-                value="<%= typeof email != 'undefined' ? email : '' %>">
+                value="<%= typeof email != 'undefined' ? email : ' ' %>">
             <p class="error" id="error"></p>
             <input type="number" class="form-control" name="user_age" id="user_age" placeholder="enter your age"
-                value="<%= typeof user_age != 'undefined' ? user_age : '' %>">
+                value="<%= typeof user_age != 'undefined' ? user_age : ' ' %>">
             <input type="password" class="form-control" name="password" id="password" placeholder="Enter password"
                 value="<%= typeof password != 'undefined' ? password : '' %>">
             <input type="password" class="form-control" name="password2" id="password2" placeholder="re-enter password"

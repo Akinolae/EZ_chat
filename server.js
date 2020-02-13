@@ -8,7 +8,7 @@ const users = {};
 // This is used to ensure that the website loads files mostly the css // The middleware
 app.use(expressLayout);
 app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'src')));
+app.use(express.static(path.join(__dirname, 'src/css')));
 // =================================================
 
 // Here we use the router to fetch pages 

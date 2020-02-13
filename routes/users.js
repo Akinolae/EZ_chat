@@ -1,6 +1,7 @@
 const express = require('express');
 const bcryptjs = require('bcryptjs');
 const router = express.Router();
+const app = express();
 // const path = require('path');
 const knex = require('knex');
 
@@ -17,7 +18,7 @@ const database = knex({
 });
 // We initialized the middleware here!
 
-router.use(express.static(__dirname + 'src/css'));
+app.use(express.static(__dirname + '/src'));
 router.use(express.json())
 router.use(express.urlencoded({
     extended: false
@@ -48,7 +49,7 @@ router.post('/register', (req, res) => {
     const date = new Date();
 
     const errors = [];
-    if (!firstName || !email || !password || !password2 || !user_age) {
+    if (!firstName || !email || !password || !password2) {
         errors.push({
             msg: "fields cannot be empty"
         })
@@ -56,23 +57,29 @@ router.post('/register', (req, res) => {
 
     if (password !== password2) {
         errors.push({
-            msg: "passowrds must match"
+            msg: "passwords must match"
         })
     }
-    if (password.length < 9) {
-        errors.push({
-            msg: "password should be atleast 9 characters"
-        })
-    }
+    // if (password.length < 9) {
+    //     errors.push({
+    //         msg: "password should be atleast 9 characters"
+    //     })
+    // }
 
     if (errors.length > 0) {
-        res.render("register")
+        res.render("register", {
+            errors,
+            firstName,
+            email,
+            hash_password2,
+            hash_password
+        })
+        // console.log(errors)
     } else {
         database.transaction(data => {
             data.insert({
                     user_name: firstName,
                     user_email: email,
-                    user_age: user_age,
                     password_validate: hash_password2,
                     user_password: hash_password,
                     reg_date: date

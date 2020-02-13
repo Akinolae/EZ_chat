@@ -35,6 +35,9 @@ router.get('/main', (req, res) => {
 router.get('/register', (req, res) => {
     res.render("register");
 })
+router.get('/chat', (req, res) => {
+    res.render("chat")
+})
 router.post('/register', (req, res) => {
     const {
         firstName,

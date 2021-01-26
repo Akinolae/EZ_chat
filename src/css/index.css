@@ -1,7 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-    background-color: black;
+    background:#b1acac94;
+}
+.main {
+    width: 70%;
+    margin: auto;
+    background-color: white;
+    height: auto;
+    border-radius: 30px;
+}
+.header {
+    height: 200px;
+    width: 100%;
+    background-color: rgb(36, 36, 70);
 }
 
-.form {
-    margin-top: 30px;
+.text {
+    width: 90%;
+    margin: auto;
+}
+.text h1 {
+    padding-top: 30px;
+    color: #d6d6d6;
+}
+.text p {
+    color: #d6d6d6;
+}
+.send-message-form {
+
+}
+.form2 {
+    width: 65%;
+    position: fixed;
+    top: 90%;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.form2 input {
+    background:#b1acac;
+    border: none;
+    outline: none;
+    width: 60%;
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    color: whitesmoke;
+}
+.form2 button {
+    border: none;
+    outline: none;
+    background-color: rgb(36, 36, 70);
+    height: 60px;
+    width: 60px;
+    border-radius: 30px;
+}
+.message-body {
+    padding-top: 40px;
+    width: 95%;
+    margin: auto;
 }

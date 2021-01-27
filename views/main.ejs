@@ -1,44 +1,26 @@
  <section class="main">
+     <audio controls id="audio">
+         <source  src="audio/piece-of-cake-611.mp3" type="audio/mp3">
+     </audio>
      <div class="header">
         <div class="text">
-            <h1>Hi there</h1>
+            <h1>Hi there</h1> 
+            <div class="available" id="available">
+            </div>
             <p>Welcome to EZ-chat. Connect with people of similar interest</p>
+            <p style="color: rgb(57, 175, 57);" id="welcome"></p>
         </div>
      </div>
      <div class="messages" id="messages"></div>
      <div class="message-body">
-            <div>
-                <h4>Chat me</h4>
-            </div>
-            <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum esse, mollitia aperiam placeat facere asperiores reiciendis a labore! Minima, soluta maxime explicabo quidem dignissimos,
-                 vitae illo accusamus nisi deleniti quasi nesciunt neque expedita praesentium. Quos optio culpa similique sint in?
-            </p><br>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Iusto ipsum minus dolorum nemo repellat voluptatum rerum sit deserunt dignissimos laborum, commodi voluptate vero illum amet similique. Officiis ex reiciendis, rerum laudantium placeat animi vel doloremque, libero recusandae quas nulla iusto corrupti blanditiis optio dolor tempora unde possimus amet dolores iste quia. Facilis deleniti autem quibusdam doloremque at omnis alias mollitia amet nemo enim fugiat nihil, sint sed suscipit non ipsa aut, repellendus quisquam dicta? Praesentium ipsum minima omnis mollitia iure rem autem cum minus 
-                quod officia, nisi esse natus, excepturi nulla laborum? Commodi maiores incidunt ipsam natus vel illum velit!
-            </p><br>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Iusto ipsum minus dolorum nemo repellat voluptatum rerum sit deserunt dignissimos laborum, commodi voluptate vero illum amet similique. Officiis ex reiciendis, rerum laudantium placeat animi vel doloremque, libero recusandae quas nulla iusto corrupti blanditiis optio dolor tempora unde possimus amet dolores iste quia. Facilis deleniti autem quibusdam doloremque at omnis alias mollitia amet nemo enim fugiat nihil, sint sed suscipit non ipsa aut, repellendus quisquam dicta? Praesentium ipsum minima omnis mollitia iure rem autem cum minus 
-                quod officia, nisi esse natus, excepturi nulla laborum? Commodi maiores incidunt ipsam natus vel illum velit!
-            </p><br>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Iusto ipsum minus dolorum nemo repellat voluptatum rerum sit deserunt dignissimos laborum, commodi voluptate vero illum amet similique. Officiis ex reiciendis, rerum laudantium placeat animi vel doloremque, libero recusandae quas nulla iusto corrupti blanditiis optio dolor tempora unde possimus amet dolores iste quia. Facilis deleniti autem quibusdam doloremque at omnis alias mollitia amet nemo enim fugiat nihil, sint sed suscipit non ipsa aut, repellendus quisquam dicta? Praesentium ipsum minima omnis mollitia iure rem autem cum minus 
-                quod officia, nisi esse natus, excepturi nulla laborum? Commodi maiores incidunt ipsam natus vel illum velit!
-            </p><br>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                 Iusto ipsum minus dolorum nemo repellat voluptatum rerum sit deserunt dignissimos laborum, commodi voluptate vero illum amet similique. Officiis ex reiciendis, rerum laudantium placeat animi vel doloremque, libero recusandae quas nulla iusto corrupti blanditiis optio dolor tempora unde possimus amet dolores iste quia. Facilis deleniti autem quibusdam doloremque at omnis alias mollitia amet nemo enim fugiat nihil, sint sed suscipit non ipsa aut, repellendus quisquam dicta? Praesentium ipsum minima omnis mollitia iure rem autem cum minus 
-                quod officia, nisi esse natus, excepturi nulla laborum? Commodi maiores incidunt ipsam natus vel illum velit!
-            </p>
+           <div class="msg">
+               <p id="msg"></p>
+           </div>
         </div>
         <div class="form2">
-            <form action="" class="send-message-form" id="">
+            <form class="send-message-form" id="form">
                 <input type="text" name="text" id="text" placeholder="write a message...">
-                <button type="submit" id="send" ><i class="fas fa-facebook-messenger    "></i></button>
+                <button type="submit" id="send" ><i class="fas fa-paper-plane"></i></button>
             </form>
         </div>
 

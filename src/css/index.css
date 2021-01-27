@@ -11,7 +11,11 @@ body {
     margin: auto;
     background-color: white;
     height: auto;
-    border-radius: 30px;
+    overflow: hidden;
+    /* position: fixed; */
+}
+.main audio {
+    display: none;
 }
 .header {
     height: 200px;
@@ -30,9 +34,31 @@ body {
 .text p {
     color: #d6d6d6;
 }
-.send-message-form {
-
+.msg {
+    height: 50px;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    margin:10px auto;
+    background: rgb(131, 131, 131);
+    padding-left: 15px;
+    padding-top: 10px;
+    font-weight: 500;
+    color: lightgray;
 }
+.available {
+    height: 10px;
+    width: 10px;
+    background-color: green;
+    border-radius: 50%;
+    margin-left: auto;
+    display: none;
+}
+/* .send-message-form {
+
+} */
 .form2 {
     width: 65%;
     position: fixed;
@@ -58,9 +84,14 @@ body {
     height: 60px;
     width: 60px;
     border-radius: 30px;
+    color: white;
 }
 .message-body {
     padding-top: 40px;
     width: 95%;
     margin: auto;
+    padding-bottom: 40px;
+}
+.message-body h4 {
+    padding-bottom: 30px;
 }

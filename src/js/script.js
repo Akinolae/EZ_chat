@@ -1,73 +1,41 @@
-// const messageForm = document.getElementById('btn-submit');
-const message = document.getElementById("messages");
-const send = document.getElementById("send");
-const timeContainer = document.getElementById("time");
-const form = document.getElementById("msg-container");
-const inputText = document.getElementById("text");
 
-const socket = io.connect("http://localhost:3000");
-//  For the user to be able to submit his or her username
-const user_submit = document.getElementById("user_submit");
-const username = document.getElementById("username");
-const user_form = document.getElementById("user_form");
+const available = document.getElementById("available");
+const welcome = document.getElementById('welcome')
+const text = document.getElementById('text')
+const form = document.getElementById('form');
+const msg = document.getElementById('msg')
+const audio = document.getElementById('audio')
+const socket = io()
 
-// Create a new date that tells you the time when the message was sent !
-// It comes at the base of the recieved and send message.
-user_submit.addEventListener("click", () => {
-  console.log(username.value);
-  socket.emit("change_Username", {
-    username: username.value,
-  });
-});
+socket.on('connect', () => {
+  available.style.display = 'block';
+})
 
-console.log(send);
+socket.on('text', (message) => {
+  sendMessage(message)
+  audio.play();
+})
 
-send.addEventListener("click", () => {
-  prompt("are you sure");
-});
-// const user = username.value;
-// The time was set here:
-console.log(username);
-const sendMessage = (Msg) => {
-  const date = new Date();
-  const hours = date.getHours();
-  const minutes = date.getMinutes();
-  const time = `${hours} : ${minutes}`;
-
-  const newMsg = document.createElement("div");
-  const msgTime = document.createElement("div");
-  msgTime.innerText = time;
-  newMsg.innerText = Msg;
-  // timeContainer.append(msgTime)
-  if (newMsg.innerText === "") {
-    msgTime.style.display = "none";
-  } else {
-    form.append(newMsg);
-    form.append(msgTime);
+socket.on('message', message => {
+  if(message === 'offline'){
+    welcome.style.color = 'red'
+  }else {
+    welcome.style.color = 'rgb(57, 175, 57)'
   }
-};
+  welcome.textContent = message
+})
 
-// const user = prompt("Kindly enter your name ");
+form.addEventListener('submit', (e) => {
+  e.preventDefault()
+  const message = e.target.elements.text.value
+  socket.emit('chatText', message)
+})
 
-sendMessage("you just joined");
-socket.emit("new_user", user);
-
-socket.on("chat-message", (data) => {
-  sendMessage(`${data.name}: ${data.message}`);
-});
-
-socket.on("user_connected", (user) => {
-  sendMessage(`${user} just connected`);
-});
-
-socket.on("User_disconnected", (name) => {
-  sendMessage(`${name}: offline`);
-});
-
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const message = inputText.value;
-  socket.emit("send-chat-message", message);
-  sendMessage(`you: ${message}`);
-  inputText.value = " ";
-});
+const sendMessage = (message) => {
+  const bd = document.createElement('div');
+  bd.classList.add('msg')
+  bd.innerHTML = `
+  <p>${message}</p>
+ `
+ document.querySelector('.message-body').appendChild(bd);
+}
